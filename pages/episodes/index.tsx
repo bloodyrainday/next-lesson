@@ -1,13 +1,21 @@
 import { API } from "../../assets/api/api";
 import {
   CharacterType,
+  EpisodeType,
   ResponseType,
 } from "../../assets/api/rick-and-morty-api";
 import { Header } from "../../components/Header/Header";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const episodes = await API.rickAndMorty.getEpisodes();
+
+  if (!episodes) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       episodes,
@@ -16,7 +24,7 @@ export const getStaticProps = async () => {
 };
 
 type PropsType = {
-  episodes: ResponseType<CharacterType>;
+  episodes: ResponseType<EpisodeType>;
 };
 
 const Episodes = (props: PropsType) => {
