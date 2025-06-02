@@ -3,6 +3,7 @@ import {
   CharacterType,
   ResponseType,
 } from "../../assets/api/rick-and-morty-api";
+import { CharacterCard } from "../../components/Card/CharacterCard/CharacterCard";
 import { Header } from "../../components/Header/Header";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 
@@ -22,7 +23,7 @@ type PropsType = {
 const Characters = (props: PropsType) => {
   const { characters } = props;
   const charactersList = characters.results.map((c) => (
-    <div key={c.id}>{c.name}</div>
+    <CharacterCard key={c.id} character={c} />
   ));
   return (
     <PageWrapper>

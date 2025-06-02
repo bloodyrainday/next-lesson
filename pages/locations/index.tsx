@@ -6,6 +6,7 @@ import {
 } from "../../assets/api/rick-and-morty-api";
 import { Header } from "../../components/Header/Header";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+import { Card } from "../../components/Card/Card";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -35,7 +36,7 @@ const Locations = () => {
   if (!locations) return null;
 
   const locationsList = locations.results.map((l) => (
-    <div key={l.id}>{l.name}</div>
+    <Card key={l.id} name={l.name} />
   ));
   return (
     <PageWrapper>
