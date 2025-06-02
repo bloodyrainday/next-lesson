@@ -1,9 +1,5 @@
 import { API } from "../../assets/api/api";
-import {
-  CharacterType,
-  EpisodeType,
-  ResponseType,
-} from "../../assets/api/rick-and-morty-api";
+import { EpisodeType, ResponseType } from "../../assets/api/rick-and-morty-api";
 import { Header } from "../../components/Header/Header";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 

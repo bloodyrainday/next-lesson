@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import { ReactElement, ReactNode, useState } from "react";
 import { NextPage } from "next";
 import { QueryClient } from "@tanstack/query-core";
+import { Hydrate, QueryClientProvider } from "@tanstack/react-query";
 
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -17,5 +18,12 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   const getLayout = Component.getLayout ?? ((page) => page);
 
-  return getLayout(<Component {...pageProps} />);
+  //wrap with QueryClientProvider and Hydrate
+  return getLayout(
+    <QueryClientProvider client={queryClient}>
+      <Hydrate state={pageProps.dehydrateState}>
+        <Component {...pageProps} />
+      </Hydrate>
+    </QueryClientProvider>
+  );
 }
