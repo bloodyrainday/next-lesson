@@ -7,6 +7,7 @@ import {
 import { Header } from "../../components/Header/Header";
 import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
 import { Card } from "../../components/Card/Card";
+import { getLayout } from "../../components/Layout/BaseLayout/BaseLayout";
 
 export const getStaticProps = async () => {
   const queryClient = new QueryClient();
@@ -38,12 +39,8 @@ const Locations = () => {
   const locationsList = locations.results.map((l) => (
     <Card key={l.id} name={l.name} />
   ));
-  return (
-    <PageWrapper>
-      <Header />
-      {locationsList}
-    </PageWrapper>
-  );
+  return <PageWrapper>{locationsList}</PageWrapper>;
 };
 
+Locations.getLayout = getLayout;
 export default Locations;
