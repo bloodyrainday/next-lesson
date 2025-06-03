@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import { QueryClient } from "@tanstack/query-core";
 import { Hydrate, QueryClientProvider } from "@tanstack/react-query";
 import { useLoader } from "../assets/hooks/useLoader";
+import "../styles/nprogress.css";
 
 export type NextPageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: ReactElement) => ReactNode;
