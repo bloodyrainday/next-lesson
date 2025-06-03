@@ -8,7 +8,7 @@ export const Layout: NextPage<PropsWithChildren> = (props) => {
   return (
     <Container>
       <Header />
-      <div>{children}</div>
+      <Main>{children}</Main>
     </Container>
   );
 };
@@ -18,4 +18,10 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 20px;
+`;
+
+const Main = styled.div`
+  width: 100%;
+  padding-bottom: 10px;
+  overflow: hidden;
 `;
