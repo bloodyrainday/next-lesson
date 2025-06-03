@@ -1,12 +1,22 @@
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { API } from "../../assets/api/api";
-import {
-  CharacterType,
-  ResponseType,
-} from "../../assets/api/rick-and-morty-api";
+import { CharacterType } from "../../assets/api/rick-and-morty-api";
 import { CharacterCard } from "../../components/Card/CharacterCard/CharacterCard";
 import { getLayout } from "../../components/Layout/BaseLayout/BaseLayout";
-import { PageWrapper } from "../../components/PageWrapper/PageWrapper";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { results } = await API.rickAndMorty.getCharacters();
+
+  const paths = results.map((character) => ({
+    params: { id: String(character.id) },
+  }));
+
+  // [{params:{id:1}}, {params:{id:2}}, {params:{id:3}}]
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params || {};
