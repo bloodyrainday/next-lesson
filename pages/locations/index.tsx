@@ -1,5 +1,4 @@
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
-import { API } from "../../assets/api/api";
 import {
   LocationType,
   ResponseType,
