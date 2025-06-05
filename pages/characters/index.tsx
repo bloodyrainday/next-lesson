@@ -5,10 +5,12 @@ import { CharacterType, ResponseType } from "assets/api/rick-and-morty-api";
 import { getLayout } from "components/Layout/BaseLayout/BaseLayout";
 import { PageWrapper } from "components/PageWrapper/PageWrapper";
 
-const CharacterCard = dynamic(() =>
-  import("components/Card/CharacterCard/CharacterCard").then((module) => {
-    return module.CharacterCard;
-  })
+const CharacterCard = dynamic(
+  () =>
+    import("components/Card/CharacterCard/CharacterCard").then((module) => {
+      return module.CharacterCard;
+    }),
+  { ssr: false, loading: () => <h1>Loading...</h1> }
 );
 
 export const getStaticProps = async () => {
