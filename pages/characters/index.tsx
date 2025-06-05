@@ -13,6 +13,8 @@ export const getStaticProps = async () => {
     props: {
       characters,
     },
+    // make getStaticProps send quest more than once
+    //revalidate: 30,
   };
 };
 
