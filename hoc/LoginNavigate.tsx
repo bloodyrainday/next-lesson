@@ -4,7 +4,7 @@ import { FC, PropsWithChildren } from "react";
 export const LoginNavigate: FC<PropsWithChildren> = ({ children }) => {
   const router = useRouter();
 
-  const isAuth = true;
+  const isAuth = true; // здесь должен быть запрос за данными пользователя
 
   if (!isAuth) router.push("/test");
 
